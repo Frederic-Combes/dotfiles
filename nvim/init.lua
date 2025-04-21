@@ -84,6 +84,7 @@ else
     vim.opt.shiftwidth = 4
     vim.opt.expandtab = true
     vim.opt.scrolloff = 40
+    vim.o.cursorline = true
 
     -- NVIM only seetings
     require("config.lazy")
