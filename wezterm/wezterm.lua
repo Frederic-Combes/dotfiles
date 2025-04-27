@@ -60,7 +60,7 @@ config.key_tables = {
                 { CopyMode = "Close" } }
         },
         {
-            -- Copies the current cell
+            -- Copies the current line
             key = "z",
             mods = "NONE",
             action = wezterm.action_callback(function(window, pane)
