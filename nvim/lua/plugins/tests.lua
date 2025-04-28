@@ -16,6 +16,34 @@ return {
                     pytest_discover_instances = true,
                 }),
             },
+            icons = {
+                passed = "",
+                failed = "",
+            },
+            summary = {
+                animated = true,
+                mappings = {
+                    attach = "a",
+                    clear_marked = "x",
+                    clear_target = "X",
+                    debug = "b",
+                    debug_marked = "B",
+                    expand = {"j", "l"},
+                    expand_all = {"J", "L"},
+                    jumpto = { "q", "f" },
+                    mark = "<Tab>",
+                    next_failed = "K",
+                    output = "o",
+                    previous_failed = "I",
+                    run = "t",
+                    run_marked = "T",
+                    short = "O",
+                    stop = "s",
+                    target = "x",
+                    watch = "h",
+                },
+            }
+
         })
 
         local run_test = function()
@@ -39,11 +67,23 @@ return {
         local toggle_test_output_pane = function()
             test.output_panel.toggle()
         end
+        local clear_test_output_pane = function()
+            test.output_panel.clear()
+        end
+        local goto_prev_test = function()
+            test.jump.prev({ status = "failed" })
+        end
         local goto_prev_failed_test = function()
             test.jump.prev({ status = "failed" })
         end
+        local goto_next_test = function()
+            test.jump.next({ status = "failed" })
+        end
         local goto_next_failed_test = function()
             test.jump.next({ status = "failed" })
+        end
+        local toggle_test_list_pane = function()
+            test.summary.toggle()
         end
 
         vim.keymap.set("n", "<leader>tt", run_test, {})
@@ -51,9 +91,13 @@ return {
         vim.keymap.set("n", "<leader>tb", debug_test, {})
         vim.keymap.set("n", "<leader>tB", debug_last_test, {})
         vim.keymap.set("n", "<leader>ts", stop_test, {})
-        vim.keymap.set("n", "<leader>th", show_test_output, {})
-        vim.keymap.set("n", "<leader>to", toggle_test_output_pane, {})
-        vim.keymap.set("n", "<leader>tj", goto_prev_failed_test, {})
-        vim.keymap.set("n", "<leader>tl", goto_next_failed_test, {})
+        vim.keymap.set("n", "<leader>to", show_test_output, {})
+        vim.keymap.set("n", "<leader>th", toggle_test_output_pane, {})
+        vim.keymap.set("n", "<leader>txh", clear_test_output_pane, {})
+        vim.keymap.set("n", "<leader>ti", goto_prev_failed_test, {})
+        vim.keymap.set("n", "<leader>tj", goto_prev_test, {})
+        vim.keymap.set("n", "<leader>tk", goto_next_failed_test, {})
+        vim.keymap.set("n", "<leader>tl", goto_next_test, {})
+        vim.keymap.set("n", "<leader>et", toggle_test_list_pane, {})
     end,
 }

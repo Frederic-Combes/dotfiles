@@ -71,6 +71,44 @@ Leader: `<space>`
 | Go to previous position  | c-o |
 | Search tracked files     | *fg |
 | Search all files         |     |
+| Search for test          | ft  |
+
+(TODO: Use a test picker for telescope?)
+
+#### Tests & Test Pane
+
+| Action                     | Key  |
+|----------------------------|------|
+| Run test at cursor         | *tt  |
+| Debug test at cursor       | *tb  |
+| Debug last test            | *tB  |
+| Run tests in file          | *ta  |
+| Stop test                  | *ts  |
+| Show test output           | *to  |
+| Toggle test output pane    | *th  |
+| Clear test output pane     | *txh |
+| Toggle test list pane      | *et  |
+| Go to next test            | *tl  |
+| Go to previous test        | *tj  |
+| Go to next failed test     | *tk  |
+| Go to previous failed test | *ti  |
+| Show test output           | *ts  |
+
+
+| Action                     | Key   |
+|----------------------------|-------|
+| Run                        | t     |
+| Debug                      | b     |
+| Stop                       | s     |
+| Next Failed                | K     |
+| Previous Failed            | I     |
+| Jump to test               | q     |
+| Jump to test               | f     |
+| Show output                | o     |
+| Mark                       | `Tab` |
+| Run Marked                 | T     |
+| Clear Marked               | x     |
+
 
 # Wezterm Keymap
 

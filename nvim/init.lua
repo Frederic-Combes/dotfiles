@@ -90,8 +90,6 @@ else
     require("config.lazy")
     require("config.quick-access")
 
-    vim.cmd("autocmd TermOpen * startinsert")
-
     -- NVIM window management
     -- wijkl: Move to window
     kn("wi", "<c-w>k")
