@@ -8,6 +8,9 @@ return {
         local python = require("neotest-python")
 
         test.setup({
+            discovery = {
+                concurrent = 1,
+            },
             adapters = {
                 python({
                     dap = { justMyCode = false },
@@ -28,8 +31,8 @@ return {
                     clear_target = "X",
                     debug = "b",
                     debug_marked = "B",
-                    expand = {"j", "l"},
-                    expand_all = {"J", "L"},
+                    expand = { "j", "l" },
+                    expand_all = { "J", "L" },
                     jumpto = { "q", "f" },
                     mark = "<Tab>",
                     next_failed = "K",
