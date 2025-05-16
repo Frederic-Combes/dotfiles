@@ -109,6 +109,19 @@ Leader: `<space>`
 | Run Marked                 | T     |
 | Clear Marked               | x     |
 
+#### Debug & Debug Panes
+
+| Action                     | Key  |
+|----------------------------|------|
+| Toggle breakpoint          | *bt  |
+| Debugger: continue         | *bl  |
+| Debugger: step into        | *bi  |
+| Debugger: step over        | *bo  |
+| Debugger: step out         | *bk  |
+| Debugger: terminate        | *bs  |
+| Repl: excecute selection   | *bb  |
+| Repl: hover                | *bh  |
+| Toggle Debugger UI         | *eb  |
 
 # Wezterm Keymap
 
