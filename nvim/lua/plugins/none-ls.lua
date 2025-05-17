@@ -1,15 +1,19 @@
 return {
     "nvimtools/none-ls.nvim",
+    dependencies = { "davidmh/cspell.nvim" },
     config = function()
-        local null_ls = require("null-ls")
-        null_ls.setup({
+        local lsp = require("null-ls")
+        local spell = require("cspell")
+
+        lsp.setup({
             sources = {
-                -- NOTE: Stylua formatting must be configured
-                --null_ls.builtins.formatting.stylua,
-                null_ls.builtins.diagnostics.mypy,
-                -- NOTE: Do not use spell completion, as it provides Text completion
-                -- that are mostly always a nuissance
-                --null_ls.builtins.completion.spell,
+                lsp.builtins.diagnostics.mypy,
+                spell.diagnostics.with({
+                    diagnostics_postprocess = function(diagnostic)
+                        diagnostic.severity = vim.diagnostic.severity.HINT
+                    end,
+                }),
+                spell.code_actions,
             },
         })
     end,

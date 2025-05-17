@@ -2,9 +2,13 @@ Leader is noted as *
 
 Preceding action noted as _
 
-Bad keybings noted with !
+Bad key bind noted with !
 
-# Neovim Keymap
+# Required dependencies
+
+- ripgrep (telescope fuzzy find in files)
+
+# Neovim key map
 
 Leader: `<space>`
 
@@ -19,7 +23,7 @@ Leader: `<space>`
 | Left                | j   |
 | Character backward  | J   |
 | Right               | l   |
-| Character forward   | J   |
+| Character forward   | L   |
 | Word Begin          | u   |
 | Line Begin          | U   |
 | Word End            | o   |
@@ -37,10 +41,11 @@ Leader: `<space>`
 | Visual Mode             | v   |
 | Visual Line Mode        | V   |
 | Insert (before)         | q   |
-| Insert (begining)       | Q   |
+| Insert (beginning)      | Q   |
 | Insert (after)          | f   |
 | Insert (end)            | F   |
 | Replace                 | r   |
+| Replace Mode            | R   |
 | Copy                    | e   |
 | Cut                     | z   |
 | Paste                   | a   |
@@ -59,18 +64,18 @@ Leader: `<space>`
 
 ### Completion
 
-| Action                   | Key      |
-|--------------------------|----------|
-| Show completion menu     | c-space  |
-| Show completion menu     | c-i      |
-| Show completion menu     | c-k      |
-| Select next              | c-i      |
-| Select previous          | c-i      |
-| Accept completion        | tab      |
-| Toggle help              | c-s      |
-| Scroll help up           | c-l      |
-| Scroll help down         | c-j      |
-| Toggle signature         | c-s      |
+| Action                   | Key       |
+|--------------------------|-----------|
+| Show completion menu     | c-`space` |
+| Show completion menu     | c-i       |
+| Show completion menu     | c-k       |
+| Select next              | c-i       |
+| Select previous          | c-i       |
+| Accept completion        | `Tab`     |
+| Toggle help              | c-s       |
+| Scroll help up           | c-l       |
+| Scroll help down         | c-j       |
+| Toggle signature         | c-s       |
 
 
 ### Window & Panes 
@@ -87,7 +92,7 @@ Leader: `<space>`
 | Go to previous position  | c-o |
 | Search tracked files     | *fg |
 | Search all files         |     |
-| Search for test          | ft  |
+| Search for test          |     |
 
 (TODO: Use a test picker for telescope?)
 
@@ -135,11 +140,11 @@ Leader: `<space>`
 | Debugger: step over        | *bo  |
 | Debugger: step out         | *bk  |
 | Debugger: terminate        | *bs  |
-| Repl: excecute selection   | *bb  |
+| Repl: execute selection    | *bb  |
 | Repl: hover                | *bh  |
 | Toggle Debugger UI         | *eb  |
 
-# Wezterm Keymap
+# Wezterm key map
 
 !Leader: `<a-s>`
 

@@ -14,6 +14,7 @@ return {
             vim.keymap.set("n", "<leader>fb", telescope.buffers)
             vim.keymap.set("n", "<leader>fp", telescope.pickers)
             vim.keymap.set("n", "<leader>fh", telescope.help_tags)
+            vim.keymap.set("n", "gk", telescope.lsp_references)
         end,
     },
     {
@@ -28,10 +29,10 @@ return {
                             ["i"] = actions.move_selection_previous,
                             ["j"] = actions.toggle_selection,
                             ["h"] = actions.toggle_selection,
-                            ["<S-i>"] = actions.preview_scrolling_up,
-                            ["<S-k>"] = actions.preview_scrolling_down,
-                            ["<C-j>"] = false, --actions.preview_scrolling_left,
-                            ["<C-l>"] = false, --actions.preview_scrolling_right,
+                            ["<s-i>"] = actions.preview_scrolling_up,
+                            ["<s-k>"] = actions.preview_scrolling_down,
+                            ["<c-j>"] = false, --actions.preview_scrolling_left,
+                            ["<c-l>"] = false, --actions.preview_scrolling_right,
                             ["o"] = actions.select_default,
                             ["O"] = actions.select_vertical,
                             ["u"] = actions.toggle_selection,
