@@ -57,6 +57,22 @@ Leader: `<space>`
 | !Dedent                 | <<  |
 | !Search pattern in file | /   |
 
+### Completion
+
+| Action                   | Key      |
+|--------------------------|----------|
+| Show completion menu     | c-space  |
+| Show completion menu     | c-i      |
+| Show completion menu     | c-k      |
+| Select next              | c-i      |
+| Select previous          | c-i      |
+| Accept completion        | tab      |
+| Toggle help              | c-s      |
+| Scroll help up           | c-l      |
+| Scroll help down         | c-j      |
+| Toggle signature         | c-s      |
+
+
 ### Window & Panes 
 
 | Action                   | Key |
