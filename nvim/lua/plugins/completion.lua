@@ -51,6 +51,7 @@ return {
             completion = {
                 documentation = { auto_show = false, window = { border = "rounded" } },
                 list = { selection = { auto_insert = false } },
+                accept = { auto_brackets = { enabled = false } },
             },
             signature = {
                 enabled = true,

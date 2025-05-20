@@ -68,4 +68,7 @@ return {
             config.glsl_analyzer.setup(base)
         end,
     },
+    {
+        "tpope/vim-commentary"
+    }
 }

@@ -8,7 +8,7 @@ Bad key bind noted with !
 
 - ripgrep (telescope fuzzy find in files)
 
-# Neovim key map
+# Neovim Cheat Sheet
 
 Leader: `<space>`
 
@@ -61,13 +61,15 @@ Leader: `<space>`
 | !Indent                 | >>  |
 | !Dedent                 | <<  |
 | !Search pattern in file | /   |
+| Toggle Comment(*)       | gcc |
+
+(*): tpope/commentary (gc in visual mode, gcap for comment around paragraph, ...)
 
 ### Completion
 
 | Action                   | Key       |
 |--------------------------|-----------|
 | Show completion menu     | c-`space` |
-| Show completion menu     | c-i       |
 | Show completion menu     | c-k       |
 | Select next              | c-i       |
 | Select previous          | c-i       |
@@ -93,6 +95,11 @@ Leader: `<space>`
 | Search tracked files     | *fg |
 | Search all files         |     |
 | Search for test          |     |
+| Resize(*)                |     |
+
+(*)To resize:
++ width: use `<cmd>vert resize +N` to increase with by N columns
++ height: use `<cmd>resize +N` to increase height by N rows
 
 (TODO: Use a test picker for telescope?)
 
@@ -115,6 +122,8 @@ Leader: `<space>`
 | Go to previous failed test | *ti  |
 | Show test output           | *ts  |
 
+
+In the test pane (toggled with `*et`), use:
 
 | Action                     | Key   |
 |----------------------------|-------|
