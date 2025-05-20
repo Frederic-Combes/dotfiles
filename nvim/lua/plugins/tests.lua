@@ -8,15 +8,11 @@ return {
         local python = require("neotest-python")
 
         test.setup({
-            discovery = {
-                concurrent = 1,
-            },
             adapters = {
                 python({
                     dap = { justMyCode = false },
                     args = { "--log-level", "DEBUG" },
                     runner = "pytest",
-                    pytest_discover_instances = true,
                 }),
             },
             icons = {
@@ -89,18 +85,19 @@ return {
             test.summary.toggle()
         end
 
-        vim.keymap.set("n", "<leader>tt", run_test, {})
-        vim.keymap.set("n", "<leader>ta", run_tests_in_file, {})
-        vim.keymap.set("n", "<leader>tb", debug_test, {})
-        vim.keymap.set("n", "<leader>tB", debug_last_test, {})
-        vim.keymap.set("n", "<leader>ts", stop_test, {})
-        vim.keymap.set("n", "<leader>to", show_test_output, {})
-        vim.keymap.set("n", "<leader>th", toggle_test_output_pane, {})
-        vim.keymap.set("n", "<leader>txh", clear_test_output_pane, {})
-        vim.keymap.set("n", "<leader>ti", goto_prev_failed_test, {})
-        vim.keymap.set("n", "<leader>tj", goto_prev_test, {})
-        vim.keymap.set("n", "<leader>tk", goto_next_failed_test, {})
-        vim.keymap.set("n", "<leader>tl", goto_next_test, {})
+        local prefix = "<leader>t"
+        vim.keymap.set("n", prefix .. "t", run_test, {})
+        vim.keymap.set("n", prefix .. "a", run_tests_in_file, {})
+        vim.keymap.set("n", prefix .. "b", debug_test, {})
+        vim.keymap.set("n", prefix .. "B", debug_last_test, {})
+        vim.keymap.set("n", prefix .. "s", stop_test, {})
+        vim.keymap.set("n", prefix .. "o", show_test_output, {})
+        vim.keymap.set("n", prefix .. "h", toggle_test_output_pane, {})
+        vim.keymap.set("n", prefix .. "xh", clear_test_output_pane, {})
+        vim.keymap.set("n", prefix .. "i", goto_prev_failed_test, {})
+        vim.keymap.set("n", prefix .. "j", goto_prev_test, {})
+        vim.keymap.set("n", prefix .. "k", goto_next_failed_test, {})
+        vim.keymap.set("n", prefix .. "l", goto_next_test, {})
         vim.keymap.set("n", "<leader>et", toggle_test_list_pane, {})
     end,
 }
