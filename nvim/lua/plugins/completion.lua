@@ -1,15 +1,6 @@
-local function show_and_select_next(cmp)
-    local function execute()
-        if cmp.show() then
-            return cmp.select_next()
-        end
-    end
-    return execute
-end
-
 local function show_and_select_prev(cmp)
     local function execute()
-        if cmp.show() then
+        if cmp.show({ initial_selected_item_idx = 1 }) then
             return cmp.select_prev()
         end
     end
@@ -27,7 +18,7 @@ return {
 
             cmp.setup(opts)
 
-            vim.keymap.set("i", "<c-i>", show_and_select_next(cmp), {})
+            -- NOTE: Cannot map <c-i> here because in insert more, it's the same as <tab>
             vim.keymap.set("i", "<c-k>", show_and_select_prev(cmp), {})
         end,
         opts = {
@@ -79,4 +70,3 @@ return {
         opts_extend = { "sources.default" }
     }
 }
-

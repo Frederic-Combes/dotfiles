@@ -2,7 +2,16 @@ return {
     {
         "williamboman/mason.nvim",
         config = function()
-            require("mason").setup()
+            require("mason").setup({
+                PATH = "append",
+                ui = {
+                    keymaps = {
+                        toggle_package_expand = "<tab>",
+                        install_package = "f",
+                        toggle_help = "?",
+                    }
+                }
+            })
         end,
     },
     {
