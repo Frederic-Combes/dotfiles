@@ -32,9 +32,10 @@ return {
         dependencies = { 'saghen/blink.cmp' },
         config = function()
             local config = require("lspconfig")
-            local capabilities = require("blink.cmp").get_lsp_capabilities({})
+            local capabilities = vim.lsp.protocol.make_client_capabilities()
+            capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 
-            local base = { settings = { capabilities = capabilities } }
+            local base = { capabilities = capabilities }
 
             local lua_ls = {
                 settings = {
