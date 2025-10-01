@@ -72,6 +72,10 @@ vim.keymap.set("o", "f", "a") -- For {action} Around {text object}
 if vim.g.vscode then
     -- VSCode extension is running, don't do nothing, it crashes often enough...
 else
+    -- NOTE: For Molten, we need to have some python packages available, we use a
+    -- venv to manage them
+    vim.g.python3_host_prog = vim.fn.expand("$HOME") .. "/.venv/molten-nvim/bin/python3"
+
     vim.cmd("set number")
     vim.cmd("set relativenumber")
 
