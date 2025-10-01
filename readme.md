@@ -148,10 +148,12 @@ In the test pane (toggled with `*et`), use:
 | Debugger: step into        | *bi  |
 | Debugger: step over        | *bo  |
 | Debugger: step out         | *bk  |
-| Debugger: terminate        | *bs  |
-| Repl: execute selection    | *bb  |
-| Repl: hover                | *bh  |
+| Debugger: terminate        | *bj  |
+| Eval: execute selection    | *bb  |
 | Toggle Debugger UI         | *eb  |
+| List Breakpoints           | *fb  |
+| Enter REPL console         | *bq  |
+| Enter REPL console         | *bf  |
 
 # Wezterm key map
 

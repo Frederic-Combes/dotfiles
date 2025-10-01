@@ -11,7 +11,7 @@ return {
             vim.keymap.set("n", "<C-p>", telescope.find_files)
             vim.keymap.set("n", "<C-a>", telescope.commands)
             vim.keymap.set("n", "<leader>fg", telescope.live_grep)
-            vim.keymap.set("n", "<leader>fb", telescope.buffers)
+            vim.keymap.set("n", "<leader>fq", telescope.buffers)
             vim.keymap.set("n", "<leader>fp", telescope.pickers)
             vim.keymap.set("n", "<leader>fh", telescope.help_tags)
             vim.keymap.set("n", "gk", telescope.lsp_references)
