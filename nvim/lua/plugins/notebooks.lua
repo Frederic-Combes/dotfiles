@@ -1,3 +1,11 @@
+-- TODO: Smart kernel initialization with uv:
+-- 1. VIRTUAL_ENV defined
+--      1. Try to activate the kernel with the same name
+--      2. If it fails, use uv to see if ipykernel is installed
+--      3. If ipykernel is installed, create a kernel for that venv
+--      4. Activate that kernel
+-- 2. VIRTUAL_ENV not defined
+--      1. User picks from the list
 -- local function init_kernel_matching_virtual_environment()
 --     vim.print("Grabbing the active virtual environment...")
 --     local venv = os.getenv("VIRTUAL_ENV")
@@ -19,7 +27,7 @@ return {
         build = ":UpdateRemotePlugins",
         init = function()
             vim.g.python3_host_prog = vim.fn.expand("~/.venv/molten-nvim/bin/python")
-            vim.g.molten_image_provider = "wezterm"
+            vim.g.molten_image_provider = "image.nvim"
             vim.g.molten_output_win_max_height = 20
 
             vim.g.molten_auto_open_output = false
@@ -32,14 +40,28 @@ return {
                 { desc = "Close output window", silent = true })
             vim.keymap.set("n", "<leader>ji", ":MoltenOpenInBrowser<CR>",
                 { desc = "Open output in browser", silent = true })
-            vim.keymap.set("n", "<local>jp", ":MoltenInit<CR>",
+            vim.keymap.set("n", "<leader>jp", ":MoltenInit<CR>",
                 { desc = "Initialize Molten", silent = true })
         end,
     },
     {
-        'willothy/wezterm.nvim',
-        config = true
+        "3rd/image.nvim",
+        opts = {
+            backend = "kitty",
+            processor = "magick_rock",
+            integrations = {},                        -- do whatever you want with image.nvim's integrations
+            max_width = 100,                          -- tweak to preference
+            max_height = 12,                          -- ^
+            max_height_window_percentage = math.huge, -- this is necessary for a good experience
+            max_width_window_percentage = math.huge,
+            window_overlap_clear_enabled = true,
+            window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
+        }
     },
+    -- {
+    --     'willothy/wezterm.nvim',
+    --     config = true
+    -- },
     {
         "quarto-dev/quarto-nvim",
         dependencies = {
