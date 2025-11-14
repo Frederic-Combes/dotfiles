@@ -33,6 +33,12 @@ config.keys = {
     { key = "2",  mods = "ALT",      action = a.ActivateTab(1) },
     { key = "\"", mods = "ALT",      action = a.ActivateTab(2) },
     { key = "'",  mods = "ALT",      action = a.ActivateTab(3) },
+    { key = "(",  mods = "ALT",      action = a.ActivateTab(4) },
+    { key = "-",  mods = "ALT",      action = a.ActivateTab(5) },
+    { key = "è",  mods = "ALT",      action = a.ActivateTab(6) },
+    { key = "_",  mods = "ALT",      action = a.ActivateTab(7) },
+    { key = "ç",  mods = "ALT",      action = a.ActivateTab(8) },
+    { key = "à",  mods = "ALT",      action = a.ActivateTab(9) },
     { key = "e",  mods = "ALT",      action = a.ActivateCopyMode },
     { key = "a",  mods = "ALT",      action = a.PasteFrom("Clipboard") },
 }
@@ -58,6 +64,16 @@ config.key_tables = {
             action = a.Multiple {
                 { CopyTo = "ClipboardAndPrimarySelection" },
                 { CopyMode = "Close" } }
+        },
+        {
+            key = "E",
+            mods = "NONE",
+            action = wezterm.action_callback(function(window, pane)
+                window:copy_to_clipboard(window:get_selection_text_for_pane(pane))
+                window:perform_action(a.ClearSelection, pane)
+                window:perform_action(a.CopyMode("Close"), pane)
+                window:perform_action(a.PasteFrom("Clipboard"), pane)
+            end)
         },
         {
             -- Copies the current line

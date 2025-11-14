@@ -192,12 +192,13 @@ In the test pane (toggled with `*et`), use:
 
 ### Actions
 
-| Action                | Key |
-|-----------------------|-----|
-| Visual Mode           | v   |
-| Visual Line Mode      | V   |
-| Copy                  | e   |
-| Copy Line             | z   |
-| Copy Line into prompt | Z   |
-| Paste                 | a   |
+| Action                     | Key |
+|----------------------------|-----|
+| Visual Mode                | v   |
+| Visual Line Mode           | V   |
+| Copy Selection             | e   |
+| Copy Selection into prompt | e   |
+| Copy Line                  | z   |
+| Copy Line into prompt      | Z   |
+| Paste                      | a   |
 
