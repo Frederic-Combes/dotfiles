@@ -23,6 +23,7 @@ return {
                     "clangd",
                     "pyright",
                     "ruff",
+                    -- "elmls",
                 },
             })
         end,
@@ -33,8 +34,6 @@ return {
         config = function()
             local capabilities = vim.lsp.protocol.make_client_capabilities()
             capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
-
-            local base = { capabilities = capabilities }
 
             local lua_ls = {
                 settings = {
@@ -61,18 +60,18 @@ return {
                 },
             }
 
-            if vim.fn.has("nvim-0.11") then
-                vim.lsp.config["luals"] = vim.tbl_extend('force', base, lua_ls)
-                vim.lsp.config["clangd"] = base
-                vim.lsp.config["pyright"] = vim.tbl_extend('force', base, pyright)
-                vim.lsp.config["ruff"] = base
-                vim.lsp.config["glsl_analyzer"] = base
 
-                vim.lsp.enable("luals")
+            if vim.fn.has("nvim-0.11") then
+                vim.lsp.config("*", { capabilities = capabilities })
+                vim.lsp.config("lua_ls", lua_ls)
+                vim.lsp.config("pyright", pyright)
+
+                vim.lsp.enable("lua_ls")
                 vim.lsp.enable("clangd")
                 vim.lsp.enable("pyright")
                 vim.lsp.enable("ruff")
                 vim.lsp.enable("glsl_analyzer")
+                vim.lsp.enable("elmls")
             else
                 local config = require("lspconfig")
 
@@ -81,6 +80,7 @@ return {
                 config.pyright.setup(vim.tbl_extend('force', base, pyright))
                 config.ruff.setup(base)
                 config.glsl_analyzer.setup(base)
+                config.elmls.setup(base)
             end
         end,
     },
