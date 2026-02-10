@@ -44,20 +44,20 @@ return {
                 { desc = "Initialize Molten", silent = true })
         end,
     },
-    {
-        "3rd/image.nvim",
-        opts = {
-            backend = "kitty",
-            processor = "magick_rock",
-            integrations = {},                        -- do whatever you want with image.nvim's integrations
-            max_width = 100,                          -- tweak to preference
-            max_height = 12,                          -- ^
-            max_height_window_percentage = math.huge, -- this is necessary for a good experience
-            max_width_window_percentage = math.huge,
-            window_overlap_clear_enabled = true,
-            window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
-        }
-    },
+    -- {
+    --     "3rd/image.nvim",
+    --     opts = {
+    --         backend = "kitty",
+    --         processor = "magick_rock",
+    --         integrations = {},                        -- do whatever you want with image.nvim's integrations
+    --         max_width = 100,                          -- tweak to preference
+    --         max_height = 12,                          -- ^
+    --         max_height_window_percentage = math.huge, -- this is necessary for a good experience
+    --         max_width_window_percentage = math.huge,
+    --         window_overlap_clear_enabled = true,
+    --         window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
+    --     }
+    -- },
     -- {
     --     'willothy/wezterm.nvim',
     --     config = true
@@ -103,11 +103,6 @@ return {
         end
     },
     {
-        "GCBallesteros/jupytext.nvim",
-        opts = {
-            style = "markdown",
-            output_extension = "md",
-            force_ft = "markdown",
-        }
+        "goerz/jupytext.nvim",
     }
 }
