@@ -85,7 +85,7 @@ Leader: `<space>`
 | Action                   | Key |
 |--------------------------|-----|
 | Split vertical (& go)    | wo  |
-| Split horizontal (& go)  |     |
+| Split horizontal (& go)  | wO  |
 | Move to pane left        | wj  |
 | Move to pane right       | wl  |
 | Move to pane up          | wi  |

@@ -101,12 +101,13 @@ else
     vim.keymap.set("n", "S", vim.lsp.buf.hover)
 
     -- NVIM window management
-    -- wijkl: Move to window
+    -- w{ijkl}: Move to window
     kn("wi", "<c-w>k")
     kn("wj", "<c-w>h")
     kn("wk", "<c-w>j")
     kn("wl", "<c-w>l")
     kn("wo", ":vsplit<cr><c-w>l") -- wo: Vertical split window
+    kn("wO", ":vsplit<cr><c-w>j") -- wO: Horizontal split window
     kn("wu", "<c-W>w")            -- wu: Move next (bottom/right)
 
     -- Mappings for Terminal
