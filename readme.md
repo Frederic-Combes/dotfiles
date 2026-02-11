@@ -202,3 +202,26 @@ In the test pane (toggled with `*et`), use:
 | Copy Line into prompt      | Z   |
 | Paste                      | a   |
 
+# Notebooks
+
+Notebooks require an externel python virtual environment. It's lockfile is generated with
+```bash
+uv pip compile nvim/notebooks/requirements.in --no-header --no-annotate > nvim/notebooks/requirements.txt
+```
+
+Additionally, `jupytext` must be on the path. It can be installed with `uv tool install jupytext`.
+
+### Action
+
+| Action                   | Key |
+|--------------------------|-----|
+| Initialize the kernel    | jp  |
+| Restart the kernel       | jP  |
+| Run cell                 | jr  |
+| Run cells above          | ja  |
+| Run all cells            | jA  |
+| Show/Enter output        | jo  |
+| Output in browser        | ji  |
+| Delete cell output       |     |
+| Delete all cells output  |     |
+
