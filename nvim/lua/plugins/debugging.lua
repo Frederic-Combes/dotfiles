@@ -10,7 +10,7 @@ local function current_selection()
     local start_row = cursor_start[2] - 1
     local finish_row = cursor_finish[2] - 1
 
-    local lines = vim.api.nvim_buf_get_lines(0, start_row, finish_row+ 1, false)
+    local lines = vim.api.nvim_buf_get_lines(0, start_row, finish_row + 1, false)
 
     if mode == "v" then
         -- Cursor columns are 1 indexed, while the buffer columns are 0 indexed, so offset by 1
@@ -46,6 +46,28 @@ local function repl_execute_current_word(dap)
     return exec
 end
 
+local function eval_current_selection(dap)
+    local function eval()
+        local selection = current_selection()
+
+        if selection == nil then return end
+
+        dap.eval(selection, { enter = true })
+    end
+
+    return eval
+end
+
+
+local function eval_current_word(dap)
+    local function eval()
+        return dap.eval(vim.fn.expand('<cword>'), { enter = true })
+    end
+
+    return eval
+end
+
+
 return { {
     "mfussenegger/nvim-dap",
     dependencies = {
@@ -58,35 +80,47 @@ return { {
         local widgets = require("dap.ui.widgets")
 
         ui.setup({
-            layouts = {
-                {
-                    size = 10,
-                    position = "bottom",
-                    elements = {
-                        { id = "breakpoints", size = 54 / 160 },
-                        { id = "stacks",      size = 54 / 160 },
-                        { id = "watches",     size = 52 / 160 },
-                    },
+            layouts = { {
+                size = 15,
+                position = "bottom",
+                elements = {
+                    { id = "watches", size = 0.75 },
+                    { id = "stacks",  size = 0.25 },
                 },
-                {
-                    size = 60,
-                    position = "left",
-                    elements = { "repl" }
-                },
-            }
+            } },
+            mappings = {
+                edit = "d",
+                remove = "s",
+                expand = "<Tab>",
+                open = "<CR>",
+                repl = "r",
+                toggle = "t"
+            },
         })
 
         local prefix = "<leader>b"
         vim.keymap.set("n", prefix .. "t", dap.toggle_breakpoint, {})
         vim.keymap.set("n", prefix .. "l", dap.continue, {})
         vim.keymap.set("n", prefix .. "i", dap.step_into, {})
-        vim.keymap.set("n", prefix .. "o", dap.step_over, {})
         vim.keymap.set("n", prefix .. "k", dap.step_out, {})
-        vim.keymap.set("n", prefix .. "k", dap.terminate, {})
-        vim.keymap.set("n", prefix .. "b", repl_execute_current_word(dap), {})
-        vim.keymap.set("v", prefix .. "b", repl_execute_current_selection(dap), {})
+        vim.keymap.set("n", prefix .. "o", dap.step_over, {})
+        vim.keymap.set("n", prefix .. "j", dap.terminate, {})
+        vim.keymap.set("n", prefix .. "b", eval_current_word(ui), {})
+        vim.keymap.set("v", prefix .. "b", eval_current_selection(ui), {})
 
-        vim.keymap.set("n", prefix .. "h", widgets.hover, {})
+        -- Open breakpoints list
+        local function list_breakpoints()
+            ui.float_element("breakpoints", { enter = true, position = "center" })
+        end
+        vim.keymap.set("n", "<leader>fb", list_breakpoints)
+
+        -- Open repl
+        local function open_repl()
+            ui.float_element("repl", { enter = true, position = "center" })
+        end
+        vim.keymap.set("n", prefix .. "f", open_repl)
+        vim.keymap.set("n", prefix .. "q", open_repl)
+
         vim.keymap.set("n", "<leader>ec", ui.toggle, {})
 
         dap.listeners.before.attach.dapui_config = ui.open
