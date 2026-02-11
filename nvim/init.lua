@@ -107,7 +107,7 @@ else
     kn("wk", "<c-w>j")
     kn("wl", "<c-w>l")
     kn("wo", ":vsplit<cr><c-w>l") -- wo: Vertical split window
-    kn("wO", ":vsplit<cr><c-w>j") -- wO: Horizontal split window
+    kn("wO", ":split<cr><c-w>j")  -- wO: Horizontal split window
     kn("wu", "<c-W>w")            -- wu: Move next (bottom/right)
 
     -- Mappings for Terminal
