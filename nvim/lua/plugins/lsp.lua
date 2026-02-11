@@ -31,7 +31,6 @@ return {
         "neovim/nvim-lspconfig",
         dependencies = { 'saghen/blink.cmp' },
         config = function()
-            local config = require("lspconfig")
             local capabilities = vim.lsp.protocol.make_client_capabilities()
             capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 
@@ -62,11 +61,17 @@ return {
                 },
             }
 
-            config.lua_ls.setup(vim.tbl_extend('force', base, lua_ls))
-            config.clangd.setup(base)
-            config.pyright.setup(vim.tbl_extend('force', base, pyright))
-            config.ruff.setup(base)
-            config.glsl_analyzer.setup(base)
+            vim.lsp.config["luals"] = vim.tbl_extend('force', base, lua_ls)
+            vim.lsp.config["clangd"] = base
+            vim.lsp.config["pyright"] = vim.tbl_extend('force', base, pyright)
+            vim.lsp.config["ruff"] = base
+            vim.lsp.config["glsl_analyzer"] = base
+
+            vim.lsp.enable("luals")
+            vim.lsp.enable("clangd")
+            vim.lsp.enable("pyright")
+            vim.lsp.enable("ruff")
+            vim.lsp.enable("glsl_analyzer")
         end,
     },
     {
