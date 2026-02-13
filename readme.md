@@ -175,6 +175,13 @@ In the test pane (toggled with `*et`), use:
 | Go to Tab 4           | a-4   |
 | Copy Mode             | a-e   |
 
+### Notebooks
+
+In order to edit notebooks in neovim, you need `jupytext`. You can install it with
+```bash
+uv tool install jupytext
+```
+
 ## Wezterm copy mode
 
 ### Motions
