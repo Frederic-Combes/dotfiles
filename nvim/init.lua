@@ -89,8 +89,24 @@ else
     require("config.lazy")
     require("config.quick-access")
 
-    vim.keymap.set("n", "gj", function() vim.diagnostic.jump({ count = -1 }) end)
-    vim.keymap.set("n", "gl", function() vim.diagnostic.jump({ count = 1 }) end)
+    vim.keymap.set("n", "gj",
+        function()
+            vim.diagnostic.jump({
+                count = -1,
+                float = true,
+                severity = { min = vim.diagnostic.severity.WARN }
+            })
+        end)
+    vim.keymap.set("n", "gl",
+        function()
+            vim.diagnostic.jump({
+                count = 1,
+                float = true,
+                severity = { min = vim.diagnostic.severity.WARN }
+            })
+        end)
+    vim.keymap.set("n", "gJ", function() vim.diagnostic.jump({ count = -1, float = true }) end)
+    vim.keymap.set("n", "gL", function() vim.diagnostic.jump({ count = 1, float = true }) end)
     vim.keymap.set("n", "<leader>rk", vim.diagnostic.open_float)
 
     vim.keymap.set("n", "gi", vim.lsp.buf.declaration)
