@@ -35,7 +35,7 @@ config.keys = {
     { key = "'",  mods = "ALT",      action = a.ActivateTab(3) },
     { key = "(",  mods = "ALT",      action = a.ActivateTab(4) },
     { key = "-",  mods = "ALT",      action = a.ActivateTab(5) },
-    { key = "è",  mods = "ALT",      action = a.ActivateTab(6) },
+    { key = "7",  mods = "ALT",      action = a.ActivateTab(6) },
     { key = "_",  mods = "ALT",      action = a.ActivateTab(7) },
     { key = "ç",  mods = "ALT",      action = a.ActivateTab(8) },
     { key = "à",  mods = "ALT",      action = a.ActivateTab(9) },
