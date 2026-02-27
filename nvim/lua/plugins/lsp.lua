@@ -61,17 +61,25 @@ return {
                 },
             }
 
+            local tsserver = {
+                cmd = { 'typescript-language-server', '--stdio' },
+                filetypes = { 'typescript' },
+                root_dir = vim.fs.root(0, { 'package.json', '.git' }),
+            }
+
             vim.lsp.config["luals"] = vim.tbl_extend('force', base, lua_ls)
             vim.lsp.config["clangd"] = base
             vim.lsp.config["pyright"] = vim.tbl_extend('force', base, pyright)
             vim.lsp.config["ruff"] = base
             vim.lsp.config["glsl_analyzer"] = base
+            vim.lsp.config["tsserver"] = vim.tbl_extend('force', base, tsserver)
 
             vim.lsp.enable("luals")
             vim.lsp.enable("clangd")
             vim.lsp.enable("pyright")
             vim.lsp.enable("ruff")
             vim.lsp.enable("glsl_analyzer")
+            vim.lsp.enable("tsserver")
         end,
     },
     {

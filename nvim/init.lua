@@ -79,8 +79,9 @@ else
     vim.cmd.filetype("plugin on")
     vim.cmd.syntax("on")
 
-    vim.opt.softtabstop = 4
-    vim.opt.shiftwidth = 4
+    -- Disabling this, it messes up formatting by lsp
+    vim.opt.softtabstop = 0
+    vim.opt.shiftwidth = 2
     vim.opt.expandtab = true
     vim.opt.scrolloff = 40
     vim.o.cursorline = true
