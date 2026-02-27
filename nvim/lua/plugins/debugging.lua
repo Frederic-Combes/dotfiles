@@ -10,7 +10,7 @@ local function current_selection()
     local start_row = cursor_start[2] - 1
     local finish_row = cursor_finish[2] - 1
 
-    local lines = vim.api.nvim_buf_get_lines(0, start_row, finish_row+ 1, false)
+    local lines = vim.api.nvim_buf_get_lines(0, start_row, finish_row + 1, false)
 
     if mode == "v" then
         -- Cursor columns are 1 indexed, while the buffer columns are 0 indexed, so offset by 1
