@@ -89,6 +89,7 @@ else
     -- NVIM only settings
     require("config.lazy")
     require("config.quick-access")
+    require("config.autocommands")
 
     vim.keymap.set("n", "gj",
         function()
