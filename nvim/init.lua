@@ -3,6 +3,9 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.o.termguicolors = true
 
+-- Python
+vim.g.python3_host_prog = vim.fn.expand("~/.venv/molten-nvim/bin/python3")
+
 -- set clipboard to global clipboard
 vim.opt.clipboard:append("unnamedplus")
 

@@ -1,0 +1,9 @@
+cairosvg
+pnglatex
+plotly[kaleido]
+pyperclip
+nbformat
+pynvim
+jupyter-client
+pillow
+requests
