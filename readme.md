@@ -155,6 +155,18 @@ In the test pane (toggled with `*et`), use:
 | Enter REPL console         | *bq  |
 | Enter REPL console         | *bf  |
 
+#### Claude Code
+
+| Action                       | Key      |
+|------------------------------|----------|
+| Toggle Claude terminal       | *ea      |
+| Focus Claude terminal        | *af      |
+| Resume conversation          | *ar      |
+| Continue last conversation   | *aR      |
+| Select model                 | *am      |
+| Add current buffer to Claude | *ab      |
+| Send selection to Claude     | *as (v)  |
+
 # Wezterm key map
 
 !Leader: `<a-s>`
