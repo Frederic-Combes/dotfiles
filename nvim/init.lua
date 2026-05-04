@@ -29,7 +29,7 @@ end
 -- - Vim keys not bound
 --     o z h f
 -- - Keyboard keys unused
---     x ^ $ b t h m
+--     ^ $ b t h m
 
 -- Mapping for insertion
 knv("q", "i") -- q: insert: i
@@ -52,10 +52,13 @@ knov("J", "F")     -- J: find backwards F
 knov("L", "f")     -- L: find forwards f
 
 -- Mapping for actions
-knov(";", ".")     -- ;: repeat last insert action: .
+knov("c", ".")     -- c: repeat last edit (vanilla .) — left-hand for alternance with motions
+knov("x", "<nop>") -- x: retired; use z to cut. Reserved for a future binding.
 knov("z", "x")     -- z: cut: x
 knov("e", "y")     -- e: copy y
+knov("E", "y$")    -- E: copy to end of line: y$ (vanilla Y)
 knov("a", "p")     -- a: paste: p
+knov("A", "P")     -- A: paste before: P
 knov("s", "d")     -- s: delete: d
 knov("d", "c")     -- d: change to: c
 knov("r", "r")     -- r: replace: r
