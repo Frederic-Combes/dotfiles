@@ -9,7 +9,7 @@ return {
       lsp.setup({
         sources = {
           lsp.builtins.formatting.prettier,
-          lsp.builtins.diagnostics.mypy,
+lsp.builtins.diagnostics.mypy,
           spell.diagnostics.with({
             diagnostics_postprocess = function(diagnostic)
               diagnostic.severity = vim.diagnostic.severity.HINT
