@@ -1,88 +1,110 @@
 return {
-    {
-        "williamboman/mason.nvim",
-        config = function()
-            require("mason").setup({
-                PATH = "append",
-                ui = {
-                    keymaps = {
-                        toggle_package_expand = "<tab>",
-                        install_package = "f",
-                        toggle_help = "?",
-                    }
-                }
-            })
-        end,
-    },
-    {
-        "williamboman/mason-lspconfig.nvim",
-        config = function()
-            require("mason-lspconfig").setup({
-                ensure_installed = {
-                    "lua_ls",
-                    "clangd",
-                    "pyright",
-                    "ruff",
-                },
-            })
-        end,
-    },
-    {
-        "neovim/nvim-lspconfig",
-        dependencies = { 'saghen/blink.cmp' },
-        config = function()
-            local capabilities = vim.lsp.protocol.make_client_capabilities()
-            capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
+  {
+    "williamboman/mason.nvim",
+    config = function()
+      require("mason").setup({
+        PATH = "append",
+        ui = {
+          keymaps = {
+            toggle_package_expand = "<tab>",
+            install_package = "f",
+            toggle_help = "?",
+          }
+        }
+      })
+    end,
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    config = function()
+      require("mason-lspconfig").setup({
+        ensure_installed = {
+          "lua_ls",
+          "clangd",
+          "pyright",
+          "ruff",
+        },
+      })
+    end,
+  },
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = { 'saghen/blink.cmp' },
+    config = function()
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 
-            local base = { capabilities = capabilities }
+      local base = { capabilities = capabilities }
 
-            local lua_ls = {
-                settings = {
-                    Lua = {
-                        runtime = { version = "LuaJIT" },
-                        diagnostics = { globals = { "vim" } },
-                        workspace = {
-                            library = vim.api.nvim_get_runtime_file("", true)
-                        },
-                        telemetry = { enable = false }
-                    }
+      local lua_ls = {
+        settings = {
+          Lua = {
+            runtime = { version = "LuaJIT" },
+            diagnostics = { globals = { "vim" } },
+            workspace = {
+              library = vim.api.nvim_get_runtime_file("", true)
+            },
+            telemetry = { enable = false }
+          }
 
-                }
+        }
+      }
+
+      local pyright = {
+        settings = {
+          python = {
+            analysis = {
+              typeCheckingMode = "off",
+              exclude = { "build/", "**/__pycache__", ".git" },
+            },
+          },
+        },
+      }
+
+      local tsserver = {
+        cmd = { 'typescript-language-server', '--stdio' },
+        filetypes = { 'typescript' },
+        root_dir = vim.fs.root(0, { 'package.json', '.git' }),
+      }
+
+      vim.lsp.config["luals"] = vim.tbl_extend('force', base, lua_ls)
+      vim.lsp.config["clangd"] = base
+      vim.lsp.config["pyright"] = vim.tbl_extend('force', base, pyright)
+      vim.lsp.config["ruff"] = base
+      vim.lsp.config["glsl_analyzer"] = base
+      vim.lsp.config["tsserver"] = vim.tbl_extend('force', base, tsserver)
+
+      vim.lsp.enable("luals")
+      vim.lsp.enable("clangd")
+      vim.lsp.enable("pyright")
+      vim.lsp.enable("ruff")
+      vim.lsp.enable("glsl_analyzer")
+      vim.lsp.enable("tsserver")
+    end,
+  },
+  {
+    "mrcjkb/rustaceanvim",
+    tag = "v8.0.5",
+    lazy = false,
+    ft = { "rust" },
+    init = function()
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
+      vim.g.rustaceanvim = {
+        server = {
+          capabilities = capabilities,
+          settings = {
+            ["rust-analyzer"] = {
+              checkOnSave = true,
+              check = { command = "clippy" },
+              cargo = { buildScripts = { enable = true } },
+              procMacro = { enable = true },
             }
-
-            local pyright = {
-                settings = {
-                    python = {
-                        analysis = {
-                            typeCheckingMode = "off",
-                            exclude = { "build/", "**/__pycache__", ".git" },
-                        },
-                    },
-                },
-            }
-
-            local tsserver = {
-                cmd = { 'typescript-language-server', '--stdio' },
-                filetypes = { 'typescript' },
-                root_dir = vim.fs.root(0, { 'package.json', '.git' }),
-            }
-
-            vim.lsp.config["luals"] = vim.tbl_extend('force', base, lua_ls)
-            vim.lsp.config["clangd"] = base
-            vim.lsp.config["pyright"] = vim.tbl_extend('force', base, pyright)
-            vim.lsp.config["ruff"] = base
-            vim.lsp.config["glsl_analyzer"] = base
-            vim.lsp.config["tsserver"] = vim.tbl_extend('force', base, tsserver)
-
-            vim.lsp.enable("luals")
-            vim.lsp.enable("clangd")
-            vim.lsp.enable("pyright")
-            vim.lsp.enable("ruff")
-            vim.lsp.enable("glsl_analyzer")
-            vim.lsp.enable("tsserver")
-        end,
-    },
-    {
-        "tpope/vim-commentary"
-    }
+          }
+        }
+      }
+    end,
+  },
+  {
+    "tpope/vim-commentary"
+  }
 }

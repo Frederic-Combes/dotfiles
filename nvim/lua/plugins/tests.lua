@@ -2,6 +2,7 @@ return {
     "nvim-neotest/neotest",
     dependencies = {
         "nvim-neotest/neotest-python",
+        "mrcjkb/rustaceanvim",
     },
     config = function()
         local test = require("neotest")
@@ -14,6 +15,7 @@ return {
                     args = { "--log-level", "DEBUG" },
                     runner = "pytest",
                 }),
+                require('rustaceanvim.neotest'),
             },
             icons = {
                 passed = "",
