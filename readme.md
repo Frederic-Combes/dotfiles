@@ -196,6 +196,48 @@ In the test pane (toggled with `*et`), use:
 | Open REPL console          | *bq  |
 | Open REPL console          | *bf  |
 
+#### Viewing diff (Diffview)
+
+Open diffview from the shell:
+
+| Command          | Effect                              |
+|------------------|-------------------------------------|
+| `gvd`            | Diff working tree against HEAD      |
+| `gvd main`       | Diff working tree against `main`    |
+| `gvd HEAD~2`     | Diff working tree against 2 commits back |
+
+Or from inside neovim:
+
+| Command                     | Effect                           |
+|-----------------------------|----------------------------------|
+| `:DiffviewOpen`             | Diff working tree against HEAD   |
+| `:DiffviewOpen main`        | Diff against a ref               |
+| `:DiffviewFileHistory %`    | Log for the current file         |
+| `:DiffviewFileHistory`      | Log for the whole branch         |
+| `:DiffviewClose`            | Close diffview                   |
+
+File panel navigation (custom):
+
+| Action                   | Key |
+|--------------------------|-----|
+| Previous entry           | i   |
+| Next entry               | k   |
+| Collapse directory       | j   |
+| Expand / open entry      | l   |
+
+In the diff view:
+
+| Action                   | Key      |
+|--------------------------|----------|
+| Next changed file        | `Tab`    |
+| Previous changed file    | `S-Tab`  |
+| Expand fold              | xi       |
+| Collapse fold            | xk       |
+| Prev diff hunk           | [c       |
+| Next diff hunk           | ]c       |
+| Close diffview           | q        |
+| Refresh                  | R        |
+
 #### Claude Code
 
 | Action                       | Key      |
