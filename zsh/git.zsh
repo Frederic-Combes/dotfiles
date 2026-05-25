@@ -18,3 +18,4 @@ gcm() {
 gl() {
     git --no-pager log --oneline -n "${1:-20}"
 }
+
